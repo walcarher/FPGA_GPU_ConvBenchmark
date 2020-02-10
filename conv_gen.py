@@ -14,7 +14,7 @@ n_iter = 5000  # Number of iterations on a single convolution run
 
 # Random input tensor or image with 1 batch, 1 channel and size 
 # input_tensorxinput_tensor
-input = torch.randn(1,1,input_tensor,input_tensor).cuda()
+input = torch.randn(1,1,input_tensor,input_tensor)
 input_names = ['input']
 output_names = ['output']
 
@@ -33,12 +33,12 @@ for num_convs in num_conv_list:
 		def __init__(self):
 			super(Conv1x1_Net,self).__init__()
 			#1 batch size, n conv output, kernel size 1x1, stride 1-1
-			self.conv1 = nn.Conv2d(1, num_convs, 1).cuda()
+			self.conv1 = nn.Conv2d(1, num_convs, 1)
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()
+			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
+			x = self.conv1(x)
 			return x
 
 	class Conv3x3_Net(nn.Module):
@@ -46,12 +46,12 @@ for num_convs in num_conv_list:
 		def __init__(self):
 			super(Conv3x3_Net,self).__init__()
 			#1 batch size, n conv output, kernel size 3x3, stride 1-1
-			self.conv1 = nn.Conv2d(1, num_convs, 3).cuda()
+			self.conv1 = nn.Conv2d(1, num_convs, 3)
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
+			x = self.conv1(x)			
 			return x
 
 	class Conv5x5_Net(nn.Module):
@@ -59,12 +59,12 @@ for num_convs in num_conv_list:
 		def __init__(self):
 			super(Conv5x5_Net,self).__init__()
 			#1 batch size, n conv output, kernel size 5x5, stride 1-1
-			self.conv1 = nn.Conv2d(1, num_convs, 5).cuda()
+			self.conv1 = nn.Conv2d(1, num_convs, 5)
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
+			x = self.conv1(x)			
 			return x
 
 	class Conv7x7_Net(nn.Module):
@@ -72,12 +72,12 @@ for num_convs in num_conv_list:
 		def __init__(self):
 			super(Conv7x7_Net,self).__init__()
 			#1 batch size, n conv output, kernel size 7x7, stride 1-1
-			self.conv1 = nn.Conv2d(1, num_convs, 7).cuda()
+			self.conv1 = nn.Conv2d(1, num_convs, 7)
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
+			x = self.conv1(x)			
 			return x
 
 	class Conv11x11_Net(nn.Module):
@@ -85,12 +85,12 @@ for num_convs in num_conv_list:
 		def __init__(self):
 			super(Conv11x11_Net,self).__init__()
 			#1 batch size, n conv output, kernel size 11x11, stride 1-1
-			self.conv1 = nn.Conv2d(1, num_convs, 11).cuda()
+			self.conv1 = nn.Conv2d(1, num_convs, 11)
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
+			x = self.conv1(x)			
 			return x
 
 	# Convolution layer model
@@ -99,7 +99,7 @@ for num_convs in num_conv_list:
 
 	print("Now generating ...")
 
-	onnx_file = 'conv1x1/conv1x1_%d' % num_convs + '.onnx'
+	onnx_file = 'vhdl_generated/conv1x1/conv1x1_%d' % num_convs + '.onnx'
 	torch.onnx.export(conv1x1_net, input, onnx_file, verbose=True, input_names=input_names, output_names=output_names)
 
 	# Convolution layer model
@@ -108,7 +108,7 @@ for num_convs in num_conv_list:
 	
 	print("Now generating ...")
 
-	onnx_file = 'conv3x3/conv3x3_%d' % num_convs + '.onnx'
+	onnx_file = 'vhdl_generated/conv3x3/conv3x3_%d' % num_convs + '.onnx'
 	torch.onnx.export(conv3x3_net, input, onnx_file, verbose=True, input_names=input_names, output_names=output_names)
 
 	# Convolution layer model
@@ -117,7 +117,7 @@ for num_convs in num_conv_list:
 
 	print("Now generating ...")
 
-	onnx_file = 'conv5x5/conv5x5_%d' % num_convs + '.onnx'
+	onnx_file = 'vhdl_generated/conv5x5/conv5x5_%d' % num_convs + '.onnx'
 	torch.onnx.export(conv5x5_net, input, onnx_file, verbose=True, input_names=input_names, output_names=output_names)
 
 	# Convolution layer model
@@ -126,7 +126,7 @@ for num_convs in num_conv_list:
 
 	print("Now generating ...")
 
-	onnx_file = 'conv7x7/conv7x7_%d' % num_convs + '.onnx'
+	onnx_file = 'vhdl_generated/conv7x7/conv7x7_%d' % num_convs + '.onnx'
 	torch.onnx.export(conv7x7_net, input, onnx_file, verbose=True, input_names=input_names, output_names=output_names)
 
 	# Convolution layer model
@@ -135,7 +135,7 @@ for num_convs in num_conv_list:
 
 	print("Now generating ...")
 
-	onnx_file = 'conv11x11/conv11x11_%d' % num_convs + '.onnx'
+	onnx_file = 'vhdl_generated/conv11x11/conv11x11_%d' % num_convs + '.onnx'
 	torch.onnx.export(conv11x11_net, input, onnx_file, verbose=True, input_names=input_names, output_names=output_names)
 
 print("Generation Done")
