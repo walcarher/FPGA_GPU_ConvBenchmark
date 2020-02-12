@@ -6,7 +6,7 @@ import time
 input_tensor = 224 # input image/tensor size i.e. 224x224 for ImageNet
 #start_num_convs = 100 # starting number of filters or depth of the output tensor
 #max_num_convs = 3000 # max number of filters or depth of the output tensor
-num_conv_list = [1, 8, 16, 32, 64, 128, 256, 512, 1024]
+num_conv_list = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
 #step_size_convs = 100 # step size from start to maximum number of iterations
 n_iter = 5000  # Number of iterations on a single convolution run
 	       # the average of results is reported in output file
@@ -38,8 +38,8 @@ for num_convs in num_conv_list:
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()
+			x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
+			#x = self.conv1(x).cuda()
 			return x
 
 	class Conv3x3_Net(nn.Module):
@@ -51,8 +51,8 @@ for num_convs in num_conv_list:
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
+			#x = self.conv1(x).cuda()			
 			return x
 
 	class Conv5x5_Net(nn.Module):
@@ -64,8 +64,8 @@ for num_convs in num_conv_list:
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
+			#x = self.conv1(x).cuda()			
 			return x
 
 	class Conv7x7_Net(nn.Module):
@@ -77,8 +77,8 @@ for num_convs in num_conv_list:
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
+			#x = self.conv1(x).cuda()			
 			return x
 
 	class Conv11x11_Net(nn.Module):
@@ -90,8 +90,8 @@ for num_convs in num_conv_list:
 
 		def forward(self, x):
 			# Maxpooling 2x2 and ReLu activation function
-			#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
-			x = self.conv1(x).cuda()			
+			x = F.max_pool2d(F.relu(self.conv1(x)),(2,2)).cuda()
+			#x = self.conv1(x).cuda()			
 			return x
 
 	# Convolution layer model
