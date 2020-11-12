@@ -10,6 +10,8 @@ mkdir "vhdl_generated"
 CONV=("conv1x1" "conv3x3" "conv5x5" "conv7x7" "conv11x11")
 HW=(224 112 56 28 14)
 C=(3 16 32 64 128 256)
+#HW=(14)
+#C=(3)
 N=(16 32 64 128 256)
 
 # Generate an iterated folder for each case OperationsxHWxCxN
@@ -27,7 +29,7 @@ do
 done
 
 # Create .onnx files on each folder vhdl_generated/conkxk/hw_HW/c_C for all n cases in N
-#python3 conv_gen.py;
+python3 conv_gen.py;
 
 # Using Delirium to automatically generate .vhdl files (weights and compilers) from .onnx files. ATTENTION: Delirium is not included!
 # Create a folder vhdl_generated/conkxk/hw_HW/c_C/convkxk_hw_c_n_vhdl_generated with all the output .vhdl files

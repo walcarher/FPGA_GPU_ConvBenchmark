@@ -4,7 +4,9 @@ import torch.nn.functional as F
 
 
 HW_in = [224, 112, 56, 28, 14] # input image/tensor size i.e. 224x224 for ImageNet
+#HW_in = [14]
 C_in = [3, 16, 32, 64, 128, 256]
+#C_in = [3]
 #start_n = 100 # starting number of filters or depth of the output tensor
 #max_n = 3000 # max number of filters or depth of the output tensor
 N = [16, 32, 64, 128, 256]
@@ -42,7 +44,7 @@ for hw in HW_in:
 				def forward(self, x):
 					# Maxpooling 2x2 and ReLu activation function
 					#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
-					x = self.conv1(x)
+					x = F.relu(self.conv1(x))
 					return x
 
 			class Conv3x3_Net(nn.Module):
@@ -55,7 +57,7 @@ for hw in HW_in:
 				def forward(self, x):
 					# Maxpooling 2x2 and ReLu activation function
 					#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
-					x = self.conv1(x)			
+					x = F.relu(self.conv1(x))			
 					return x
 
 			class Conv5x5_Net(nn.Module):
@@ -68,7 +70,7 @@ for hw in HW_in:
 				def forward(self, x):
 					# Maxpooling 2x2 and ReLu activation function
 					#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
-					x = self.conv1(x)			
+					x = F.relu(self.conv1(x))			
 					return x
 
 			class Conv7x7_Net(nn.Module):
@@ -81,7 +83,7 @@ for hw in HW_in:
 				def forward(self, x):
 					# Maxpooling 2x2 and ReLu activation function
 					#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
-					x = self.conv1(x)			
+					x = F.relu(self.conv1(x))			
 					return x
 
 			class Conv11x11_Net(nn.Module):
@@ -94,7 +96,7 @@ for hw in HW_in:
 				def forward(self, x):
 					# Maxpooling 2x2 and ReLu activation function
 					#x = F.max_pool2d(F.relu(self.conv1(x)),(2,2))
-					x = self.conv1(x)			
+					x = F.relu(self.conv1(x))			
 					return x
 
 			# Convolution layer model
