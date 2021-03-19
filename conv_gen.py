@@ -1,20 +1,23 @@
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
 
-
-HW_in = [224, 112, 56, 28, 14] # input image/tensor size i.e. 224x224 for ImageNet
-#HW_in = [14]
-C_in = [3, 16, 32, 64, 128, 256]
-#C_in = [3]
-#start_n = 100 # starting number of filters or depth of the output tensor
-#max_n = 3000 # max number of filters or depth of the output tensor
-N = [16, 32, 64, 128, 256]
+# Size of input tensor
+#WH_in_list = [224, 32]
+WH_in_list = np.linspace(11, 100, 10, dtype = int ).tolist()
+#C_in_list = [3, 512]
+C_in_list = np.linspace(11, 100, 10, dtype = int ).tolist()
+# Vector list of multiple output tensor channels (number of filters)
+#N_list = [32, 1024]
+N_list = np.linspace(11, 100, 10, dtype = int ).tolist()
 #step_size_convs = 100 # step size from start to maximum number of iterations
 #n_iter = 5000  # Number of iterations on a single convolution run
 	       # the average of results is reported in output file
 
-
+print(WH_in_list)
+print(C_in_list)
+print(N_list)
 
 input_names = ['input']
 output_names = ['output']
@@ -24,13 +27,13 @@ output_names = ['output']
 #		yield start
 #		start += step
 
-for hw in HW_in:
-	for c in C_in:
+for hw in HW_in_list:
+	for c in C_in_list:
 		# Random input tensor or image with 1 batch, c channel and size 
 		# hxw
 		input = torch.randn(1,c,hw,hw)
 		#for n in iter_range(start_n, max_n, step_size_convs):
-		for n in N:
+		for n in N_list:
 
 			print("Number of convolutions: %d" % n)
 

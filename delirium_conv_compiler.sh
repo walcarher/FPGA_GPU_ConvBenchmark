@@ -8,11 +8,12 @@ mkdir "vhdl_generated"
 # Input channel depth: C
 # Number of filters/output channels: N
 CONV=("conv1x1" "conv3x3" "conv5x5" "conv7x7" "conv11x11")
-HW=(224 112 56 28 14)
-C=(3 16 32 64 128 256)
-#HW=(14)
-#C=(3)
-N=(16 32 64 128 256)
+#HW=(224 112 56 28 14)
+#C=(3 16 32 64 128 256)
+HW=(11 20 30 40 50 60 70 80 90 100)
+C=(11 20 30 40 50 60 70 80 90 100)
+N=(11 20 30 40 50 60 70 80 90 100)
+#N=(16 32 64 128 256)
 
 # Generate an iterated folder for each case OperationsxHWxCxN
 for conv in "${CONV[@]}";
