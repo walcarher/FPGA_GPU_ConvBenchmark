@@ -8,8 +8,8 @@ mkdir "vhdl_generated"
 # Input channel depth: C
 # Number of filters/output channels: N
 #CONV=("conv1x1" "conv3x3" "conv5x5" "conv7x7" "conv11x11")
-CONV=("conv3x3")
-HW=(3 4 5 6 7 8 9 10 11 12)
+CONV=("conv5x5")
+HW=(5 6 7 8 9 10 11 12 13 14)
 C=(1 2 3 4 5 6 7 8 9 10)
 N=(1 2 3 4 5 6 7 8 9 10)
 

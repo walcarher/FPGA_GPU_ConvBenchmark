@@ -5,14 +5,14 @@ import numpy as np
 
 # Size of input tensor
 #WH_in_list = [224, 32]
-WH_in_list = np.linspace(3, 12, 10, dtype = int ).tolist()
+WH_in_list = np.linspace(5, 14, 10, dtype = int ).tolist()
 #C_in_list = [3, 512]
 C_in_list = np.linspace(1, 10, 10, dtype = int ).tolist()
 # Vector list of multiple output tensor channels (number of filters)
 #N_list = [32, 1024]
 N_list = np.linspace(1, 10, 10, dtype = int ).tolist()
 #step_size_convs = 100 # step size from start to maximum number of iterations
-K_list = [3]
+K_list = [5]
 #n_iter = 5000  # Number of iterations on a single convolution run
 	       # the average of results is reported in output file
 
